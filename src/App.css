@@ -18,16 +18,12 @@
   font-size: large;
 }
 
-.map-div{
-  width: 50%;
-  height: 80%;
-}
 .map-img{
 height: 16vh;
 }
 
 .map-comp{
-  width: 50vh;
+  height: 90vh;
 }
 @keyframes map-img-spin {
   from { transform: rotate(0deg); }
