@@ -5,9 +5,6 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const style = {
-
-    }
     return (
       <div className="App">
         <header className="map-header" role="header" aria-label="map app header">
@@ -16,6 +13,7 @@ class App extends Component {
         </header>
         <p className="map-main" role="main">
         <MapCo google={this.props.google}
+        style={{width:'50vh', height:'50vh'}}
         className="map-comp" aria-label="google map including markers of a couple of riyadh's public and private universities"/>
         <ul className="map-list" aria-label="list of the univesities with markers on the map, click to show position on map">
         <li>AlFaisal University</li>
