@@ -4,17 +4,23 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 //import GoogleMapReact from 'google-map-react';
 //courtesy of the Google Maps React package, this is the starter code from the packages + some personal tweaks
 export class MapComponent extends Component {
-
-  state = {
+constructor(){
+  super();
+  this.state = {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
   };
+}
 
-  onMarkerClick = (props, marker, e) =>
+componentDidMount(){
+  fetch('')
+}
+
+  onMarkerClick = (location) =>
     this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
+      position: {lat: location.position.lat, lng: location.position.lng},
+      name: location.name,
       showingInfoWindow: true
     });
 
@@ -67,10 +73,10 @@ export class MapComponent extends Component {
     animation={this.props.google.maps.Animation.DROP}/>
 
         <InfoWindow
-          marker={this.state.activeMarker}
+          position={this.state.position}
           visible={this.state.showingInfoWindow}>
             <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+              <h1>{this.state.name}</h1>
             </div>
         </InfoWindow>
 
