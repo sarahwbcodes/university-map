@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.map-header {
+  background-color: white;
+  height: 150px;
+  padding: 20px;
+  color: royalblue;
+  font-family: monospace;
+}
+
+.map-title {
+  font-size: 1.9em;
+}
+
+.map-intro {
+  font-size: large;
+}
+
+.map-div{
+  width: 50%;
+  height: 80%;
+}
+.map-img{
+height: 16vh;
+}
+
+.map-comp{
+  width: 50vh;
+}
+@keyframes map-img-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
