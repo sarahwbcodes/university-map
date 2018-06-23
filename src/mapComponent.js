@@ -15,6 +15,7 @@ constructor(){
 
 componentDidMount(){
   fetch('')
+  //wikipedia or twitter api
 }
 
   onMarkerClick = (location) =>
