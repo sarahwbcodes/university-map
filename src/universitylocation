@@ -1,0 +1,5 @@
+{name: "Prince Sultan University", position:{lat:24.7347, lng:46.6980}},
+{name: "King Saud University" , position: {lat:24.7224, lng:46.6271}},
+{name: "AlFaisal University", position:{lat:24.6643, lng:46.6760}},
+{name: "Princess Noura Bint Abdulrahman University", position:{lat:24.8465, lng:46.7247}},
+{name: "AlYamamah University", position:{lat:24.8626, lng:46.5918}},

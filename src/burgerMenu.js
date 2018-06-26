@@ -23,8 +23,9 @@ class Menu extends React.Component {
     });
     this.props.google.selectedPlace.animation.BOUNCE};
 
-
   render () {
+    // Get the list as dynamic from an API,what? wait wait
+    
     return (
       <Menu>
         <a id="PSU" className="menu-item" onClick={this.onMarkerClick} href="/">Prince Sultan University</a>

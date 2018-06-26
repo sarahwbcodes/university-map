@@ -1,6 +1,7 @@
 /*global google*/
 import React, {Component} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import * as API from './universities'
 //import GoogleMapReact from 'google-map-react';
 //courtesy of the Google Maps React package, this is the starter code from the packages + some personal tweaks
 export class MapComponent extends Component {
@@ -10,18 +11,25 @@ constructor(){
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
+    position: {},
+   Universities:[]
   };
 }
 
-componentDidMount(){
-  fetch('')
-  //wikipedia or twitter api
-}
 
-  onMarkerClick = (location) =>
+  componentWillMount() {
+    API.getAll(24.7136,46.6753).then(res => {
+      this.setState({Universities: res.response.venues})
+      console.log(res.response.venues)
+  })
+
+      //console.log(this.state.Universities);
+    }
+
+  onMarkerClick = (uni) =>
     this.setState({
-      position: {lat: location.position.lat, lng: location.position.lng},
-      name: location.name,
+      selectedPlace: uni.name,
+      position: uni.position,
       showingInfoWindow: true
     });
 
@@ -44,43 +52,26 @@ componentDidMount(){
       }}
       zoom={10}
       onClick={this.onMapClicked}
-      style={{width: '100%', height: '100%', position: 'relative'}}
+      style={{width: '100%', height: '400px', position: 'absolute'}}
       className={'map'}
     >
-  <Marker
-    name={'Prince Sultan University'}
-    position={{lat: 24.7347, lng: 46.6980}}
-    onClick={this.onMarkerClick}
-    animation={this.props.google.maps.Animation.DROP}/>
-  <Marker
-    name={'King Saud University'}
-    position={{lat: 24.7224, lng: 46.6271}}
-    onClick={this.onMarkerClick}
-    animation={this.props.google.maps.Animation.DROP}/>
-  <Marker
-    name={'AlFaisal University'}
-    position={{lat: 24.6643, lng: 46.6760}}
-    onClick={this.onMarkerClick}
-    animation={this.props.google.maps.Animation.DROP}/>
-    <Marker
-    name={'Princess Noura Bint Abdulrahman University'}
-    position={{lat: 24.8465, lng: 46.7247}}
-    onClick={this.onMarkerClick}
-    animation={this.props.google.maps.Animation.DROP}/>
-    <Marker
-    name={'AlYamamah University'}
-    position={{lat: 24.8626, lng: 46.5918}}
-    onClick={this.onMarkerClick}
-    animation={this.props.google.maps.Animation.DROP}/>
+  {this.state.Universities.map((uni)=>(
+  <Marker key={uni.name}
+  name={uni.name}
+  position={{lat:uni.location.lat, lng:uni.location.lng}}
+  onClick={this.onMarkerClick}
+  animation={this.props.google.maps.Animation.DROP}/>
+
+)
 
         <InfoWindow
           position={this.state.position}
           visible={this.state.showingInfoWindow}>
             <div>
-              <h1>{this.state.name}</h1>
+              <h1>{this.state.selectedPlace}</h1>
             </div>
         </InfoWindow>
-
+)}
       </Map>
     )
   }
