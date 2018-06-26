@@ -15,14 +15,14 @@ class App extends Component {
         <p className="map-main" role="main">
 <ul>
   
-      <li>  <button> AlFaisal University</button> </li>
+      <li>  AlFaisal University </li>
 
-      <li>  <button>AlYamamah University</button> </li>
+      <li>  AlYamamah University </li>
 
-      <li>  <button>King Saud University</button> </li>
+      <li> King Saud University</li>
 
-      <li>  <button>Princess Noura Bint Abdulrahman University</button> </li>
-      <li> <button> Prince Sultan University</button></li>
+      <li> Princess Noura Bint Abdulrahman University</li>
+      <li>Prince Sultan University</li>
 </ul>
         </p>
         <MapCo google={this.props.google}
