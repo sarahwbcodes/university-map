@@ -10,7 +10,7 @@ constructor(){
   this.state = {
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {},
+    selectedPlace: '',
     position: {},
    Universities:[]
   };
@@ -45,33 +45,34 @@ constructor(){
   render() {
     return (
       <Map
-      google={this.props.google}
-      initialCenter={{
-        lat: 24.7136,
-        lng: 46.6753
-      }}
-      zoom={10}
-      onClick={this.onMapClicked}
-      style={{width: '100%', height: '400px', position: 'absolute'}}
-      className={'map'}
-    >
-  {this.state.Universities.map((uni)=>(
-  <Marker key={uni.name}
-  name={uni.name}
-  position={{lat:uni.location.lat, lng:uni.location.lng}}
-  onClick={this.onMarkerClick}
-  animation={this.props.google.maps.Animation.DROP}/>
+        google={this.props.google}
+        initialCenter={{
+          lat: 24.7136,
+          lng: 46.6753
+        }}
+        zoom={10}
+        onClick={this.onMapClicked}
+        style={{width: '100%', height: '400px', position: 'absolute'}}
+        className={'map'}
+      >
+      {
+        this.state.Universities.map((uni)=>
+          <Marker key={uni.name}
+            name={uni.name}
+            position={{lat:uni.location.lat, lng:uni.location.lng}}
+            onClick={this.onMarkerClick}
+          />
+        )
+      }
+      <InfoWindow
+        position={this.state.position}
+        visible={this.state.showingInfoWindow}
+      >
+          <div>
+            <h1>{this.state.selectedPlace}</h1>
+          </div>
+      </InfoWindow>
 
-)
-
-        <InfoWindow
-          position={this.state.position}
-          visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace}</h1>
-            </div>
-        </InfoWindow>
-)}
       </Map>
     )
   }
