@@ -52,7 +52,7 @@ constructor(){
         }}
         zoom={10}
         onClick={this.onMapClicked}
-        style={{width: '100%', height: '100%', position: 'absolute'}}
+        style={{width: '100%', height: '85%', position: 'absolute'}}
         className={'map'}
       >
       {
