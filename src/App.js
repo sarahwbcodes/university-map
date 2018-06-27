@@ -5,6 +5,11 @@ import MapCo from './mapComponent.js';
 import './App.css';
 
 class App extends Component {
+  state ={
+    lists: [
+      "AlFaisal University", "AlYamamah University", "King Saud University", "Princess Noura Bint Abdulrahman University", "Prince Sultan University"
+      ]
+  }
 
   render() {
     return (
@@ -12,20 +17,8 @@ class App extends Component {
         <header className="map-header" role="header" aria-label="map app header">
           <img src={Unilogo} className="map-img" alt="a blue icon of a globe with a grad cap used as the logo of the app" />
           <h1 className="map-title">Riyadh Universities</h1>
-        </header>        <p className="map-main" role="main">
-<ul className="map-list">
-  
-      <li tabIndex="1">  AlFaisal University </li>
-
-      <li tabIndex="2">  AlYamamah University </li>
-
-      <li tabIndex="3"> King Saud University</li>
-
-      <li tabIndex="4"> Princess Noura Bint Abdulrahman University</li>
-      <li tabIndex="5">Prince Sultan University</li>
-</ul>
-        </p>
-        <MapCo google={this.props.google}
+        </header>
+        <MapCo
         className="map-comp" aria-label="google map including markers of a couple of riyadh's public and private universities"/>
       </div>
     );
