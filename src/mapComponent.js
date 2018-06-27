@@ -15,7 +15,9 @@ constructor(){
    Universities:[]
   };
 }
-
+componentDidMount(){
+  window.gm_authFailure= this.gm_authFailure;
+}
 
   componentWillMount() {
     API.getAll(24.7136,46.6753).then(res => {
@@ -41,7 +43,9 @@ constructor(){
       })
     }
   };
-
+gm_authFailure(){
+  window.alert("Google Maps Error!")
+}
   render() {
     return (
       <Map

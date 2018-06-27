@@ -5,24 +5,24 @@ import MapCo from './mapComponent.js';
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
         <header className="map-header" role="header" aria-label="map app header">
           <img src={Unilogo} className="map-img" alt="a blue icon of a globe with a grad cap used as the logo of the app" />
           <h1 className="map-title">Riyadh Universities</h1>
-        </header>
-        <p className="map-main" role="main">
+        </header>        <p className="map-main" role="main">
 <ul className="map-list">
   
-      <li>  AlFaisal University </li>
+      <li tabIndex="1">  AlFaisal University </li>
 
-      <li>  AlYamamah University </li>
+      <li tabIndex="2">  AlYamamah University </li>
 
-      <li> King Saud University</li>
+      <li tabIndex="3"> King Saud University</li>
 
-      <li> Princess Noura Bint Abdulrahman University</li>
-      <li>Prince Sultan University</li>
+      <li tabIndex="4"> Princess Noura Bint Abdulrahman University</li>
+      <li tabIndex="5">Prince Sultan University</li>
 </ul>
         </p>
         <MapCo google={this.props.google}
