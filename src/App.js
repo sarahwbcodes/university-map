@@ -10,10 +10,10 @@ class App extends Component {
       <div className="App">
         <header className="map-header" role="header" aria-label="map app header">
           <img src={Unilogo} className="map-img" alt="a blue icon of a globe with a grad cap used as the logo of the app" />
-          <h1 className="map-title">The Riyadh Universities Map</h1>
+          <h1 className="map-title">Riyadh Universities</h1>
         </header>
         <p className="map-main" role="main">
-<ul>
+<ul className="map-list">
   
       <li>  AlFaisal University </li>
 
