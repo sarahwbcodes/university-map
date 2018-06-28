@@ -1,4 +1,3 @@
-/*global google*/
 import React, {Component} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import * as API from './universities'
@@ -23,17 +22,20 @@ componentDidMount(){
   componentWillMount() {
     API.getAll().then(res => {
       this.setState({Universities: res.response.list.listItems.items})
+      console.log(this.state.Universities);
   })
 
       //console.log(this.state.Universities);
     }
 
-  onMarkerClick = (uni) =>
+  onMarkerClick = (uni) =>{
+    console.log(uni);
     this.setState({
       selectedPlace: uni.name,
       position: uni.position,
       showingInfoWindow: true
     });
+  }
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
@@ -47,16 +49,15 @@ gm_authFailure(){
   window.alert("Google Maps Error!")
 }
 
-showInfo = (name)=>{
+showInfo = (list)=>{
    //get the the position of the name, then show the info window
   this.setState({
-      selectedPlace: name,
-      position: name.position,
+      selectedPlace: list.name,
+      position: list.position,
       showingInfoWindow: true
     });
-}
+  }
   render() {
-    console.log(this.state)
     return (
       <div>
         <List
@@ -74,8 +75,8 @@ showInfo = (name)=>{
           >
           {
             this.state.Universities.map((uni)=>
-            <Marker key={uni.name}
-              name={uni.name}
+            <Marker key={uni.venue.name}
+              name={uni.venue.name}
               position={{lat:uni.venue.location.lat, lng:uni.venue.location.lng}}
               onClick={this.onMarkerClick}
               />
