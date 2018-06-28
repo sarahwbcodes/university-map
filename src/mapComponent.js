@@ -22,8 +22,8 @@ componentDidMount(){
 
   componentWillMount() {
     API.getAll(24.7136,46.6753).then(res => {
-      this.setState({Universities: res.response.venues})
-      console.log(res.response.venues)
+      this.setState({Universities: res.response.list.listitems})
+      console.log(res.response.listitems)
   })
 
       //console.log(this.state.Universities);
