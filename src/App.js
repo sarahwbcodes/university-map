@@ -19,7 +19,7 @@ class App extends Component {
           <h1 className="map-title">Riyadh Universities</h1>
         </header>
         <MapCo
-        className="map-comp" aria-label="google map including markers of a couple of riyadh's public and private universities"/>
+        className="map-comp" aria-label="google map including markers of a couple of Riyadh's public and private universities"/>
       </div>
     );
   }

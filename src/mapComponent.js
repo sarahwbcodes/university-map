@@ -51,8 +51,8 @@ gm_authFailure(){
 showInfo = (name)=>{
    //get the the position of the name, then show the info window 
   this.setState({
-      selectedPlace: uni.name,
-      position: uni.position,
+      selectedPlace: name,
+      position: name.position,
       showingInfoWindow: true
     }); 
 }
