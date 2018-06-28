@@ -21,9 +21,8 @@ componentDidMount(){
 }
 
   componentWillMount() {
-    API.getAll(24.7136,46.6753).then(res => {
-      this.setState({Universities: res.response.list.listitems})
-      console.log(res.response.listitems)
+    API.getAll().then(res => {
+      this.setState({Universities: res.response.list.listItems.items})
   })
 
       //console.log(this.state.Universities);
@@ -49,14 +48,15 @@ gm_authFailure(){
 }
 
 showInfo = (name)=>{
-   //get the the position of the name, then show the info window 
+   //get the the position of the name, then show the info window
   this.setState({
       selectedPlace: name,
       position: name.position,
       showingInfoWindow: true
-    }); 
+    });
 }
   render() {
+    console.log(this.state)
     return (
       <div>
         <List
@@ -76,7 +76,7 @@ showInfo = (name)=>{
             this.state.Universities.map((uni)=>
             <Marker key={uni.name}
               name={uni.name}
-              position={{lat:uni.location.lat, lng:uni.location.lng}}
+              position={{lat:uni.venue.location.lat, lng:uni.venue.location.lng}}
               onClick={this.onMarkerClick}
               />
           )
