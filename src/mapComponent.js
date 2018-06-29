@@ -79,6 +79,7 @@ showInfo = (list)=>{
               name={uni.venue.name}
               position={{lat:uni.venue.location.lat, lng:uni.venue.location.lng}}
               onClick={this.onMarkerClick}
+              animation={this.props.google.maps.Animation.DROP}
               />
           )
         }
