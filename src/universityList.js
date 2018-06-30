@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import * as API from './universities'
+import escapeRegExp from 'escape-string-regexp'
 
 class universityList extends Component {
   constructor(){
@@ -15,28 +16,23 @@ class universityList extends Component {
       ],
       query:''
   }}
-
- uniUpdate = (query, lat, lng, data) => {
-    this.setState({
-      query: data
-    })
-    this.uniSearch(lat, lng);
-  }
-
-  uniSearch(query) {
-   API(query).then(data => {
-      data ?
-      this.setState({data}) : this.setState({query:[]})
-      console.log(data);
-  }).catch(err =>
-    window.alert(err)
-  )}
+//Udacity's controlled component lessons are the guide
+listUpdate=(query)=>{
+  this.setState({query: query.trim()})
+}
 
 render(){
+  let uniResults
+  if (this.state.query){
+    const result = new RegExp(escapeRegExp(this.state.query),'i')
+  uniResults = this.state.lists.filter((list) => result.test(list.name))
+}else {
+  uniResults = this.state.lists
+}
   return(
     <div className="map-main" role="main">
     <div>
-    <input type="text" value={this.state.query} onChange={this.uniUpdate.bind(this)}/>
+    <input className="map-filter" type="text" value={this.state.query} onChange={(event)=> this.listUpdate(event.target.value)}/>
       </div>
       <ul className="map-list">
         {this.state.lists.map((list) =>(
