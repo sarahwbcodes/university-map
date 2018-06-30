@@ -63,7 +63,7 @@ showInfo = (list)=>{
       <div>
         <List
           showInfo= {this.showInfo}/>
-        <Map
+        {this.state.noMapError? (<Map
           google={this.props.google}
           initialCenter={{
             lat: 24.7136,
@@ -92,7 +92,7 @@ showInfo = (list)=>{
               <h1>{this.state.selectedPlace}</h1>
             </div>
           </InfoWindow>
-        </Map>
+        </Map> ): (<h1> check your internet </h1>)}
       </div>
     )
   }
