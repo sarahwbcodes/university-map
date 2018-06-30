@@ -12,7 +12,8 @@ constructor(){
     activeMarker: {},
     selectedPlace: '',
     position: {},
-   Universities:[]
+   Universities:[],
+   noMapError: true
   };
 }
 componentDidMount(){

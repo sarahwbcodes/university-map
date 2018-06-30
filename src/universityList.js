@@ -37,7 +37,7 @@ render(){
     onChange={(event)=> this.listUpdate(event.target.value)}/>
       </div>
       <ul className="map-list">
-        {this.state.lists.map((list) =>(
+        {uniResults.map((list) =>(
           <li key= {list.name} tabIndex="0">
             <button role="button" onClick={()=>this.props.showInfo(list)}  className='clickable-places'>
               {list.name}

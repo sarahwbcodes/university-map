@@ -7,7 +7,11 @@ import './App.css';
 class App extends Component {
   state ={
     lists: [
-      "AlFaisal University", "AlYamamah University", "King Saud University", "Princess Noura Bint Abdulrahman University", "Prince Sultan University"
+      "AlFaisal University",
+      "AlYamamah University",
+      "King Saud University",
+      "Princess Noura Bint Abdulrahman University",
+      "Prince Sultan University"
       ]
   }
 
