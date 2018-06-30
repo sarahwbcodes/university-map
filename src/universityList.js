@@ -32,12 +32,14 @@ render(){
   return(
     <div className="map-main" role="main">
     <div>
-    <input className="map-filter" type="text" value={this.state.query} onChange={(event)=> this.listUpdate(event.target.value)}/>
+    <input className="map-filter"
+    type="text" value={this.state.query}
+    onChange={(event)=> this.listUpdate(event.target.value)}/>
       </div>
       <ul className="map-list">
         {this.state.lists.map((list) =>(
           <li key= {list.name} tabIndex="0">
-            <button onClick={()=>this.props.showInfo(list)}  className='clickable-places'>
+            <button role="button" onClick={()=>this.props.showInfo(list)}  className='clickable-places'>
               {list.name}
             </button></li>
           ))}
