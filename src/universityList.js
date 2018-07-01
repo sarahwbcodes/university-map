@@ -32,7 +32,7 @@ render(){
   return(
     <div className="map-main" role="main">
     <div>
-    <input className="map-filter"
+    <input role="search" aria-label="a way to filter the list items" className="map-filter"
     type="text" value={this.state.query}
     onChange={(event)=> this.listUpdate(event.target.value)}/>
       </div>

@@ -34,7 +34,8 @@ componentDidMount(){
     this.setState({
       selectedPlace: uni.name,
       position: uni.position,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      animation: this.props.google.maps.Animation.BOUNCE
     });
   }
 
@@ -58,45 +59,60 @@ showInfo = (list)=>{
       showingInfoWindow: true
     });
   }
+  
+  const loadGoogleMapsApi = require('load-google-maps-api')
+
+  loadGoogleMapsApi().then(function (googleMaps) {
+    new googleMaps.Map(document.querySelector('.map'), {
+      center: {
+        lat: 24.7136,
+        lng: 46.6753
+      },
+      zoom: 10
+    })
+  }).catch(function (error) {
+    window.alert(error)
+  })
+
   render() {
-    return (
-      <div>
-        <List
-          showInfo= {this.showInfo}/>
-        {this.state.noMapError? (<Map
-          google={this.props.google}
-          initialCenter={{
-            lat: 24.7136,
-            lng: 46.6753
-          }}
-          zoom={10}
-          onClick={this.onMapClicked}
-          style={{width: '100%', height: '85%', position: 'absolute'}}
-          className={'map'}
-          >
-          {
-            this.state.Universities.map((uni)=>
-            <Marker key={uni.venue.name}
-              name={uni.venue.name}
-              position={{lat:uni.venue.location.lat, lng:uni.venue.location.lng}}
-              onClick={this.onMarkerClick}
-              animation={this.props.google.maps.Animation.DROP}
-              />
-          )
-        }
-          <InfoWindow
-            position={this.state.position}
-            visible={this.state.showingInfoWindow}
+      return (
+        <div>
+          <List
+            showInfo= {this.showInfo}/>
+          {this.state.noMapError? (<Map
+            google={this.props.google}
+            initialCenter={{
+              lat: 24.7136,
+              lng: 46.6753
+            }}
+            zoom={10}
+            onClick={this.onMapClicked}
+            style={{width: '100%', height: '85%', position: 'absolute'}}
+            className={'map'}
             >
-            <div>
-              <h1>{this.state.selectedPlace}</h1>
-            </div>
-          </InfoWindow>
-        </Map> ): (<h1> check your internet </h1>)}
-      </div>
-    )
+            {
+              this.state.Universities.map((uni)=>
+              <Marker key={uni.venue.name}
+                name={uni.venue.name}
+                position={{lat:uni.venue.location.lat, lng:uni.venue.location.lng}}
+                onClick={this.onMarkerClick}
+                animation={this.props.google.maps.Animation.DROP}
+                />
+            )
+          }
+            <InfoWindow
+              position={this.state.position}
+              visible={this.state.showingInfoWindow}
+              >
+              <div>
+                <h1>{this.state.selectedPlace}</h1>
+              </div>
+            </InfoWindow>
+          </Map> ): (<h1> check your internet </h1>)}
+        </div>
+      )
+    }
   }
-}
 export default GoogleApiWrapper({
   apiKey: "AIzaSyA_yoxSAEdyEn1s9J8EkIigqIFV-61M4iM"
 })(MapComponent)
