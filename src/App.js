@@ -14,8 +14,9 @@ class App extends Component {
       "Prince Sultan University"
       ]
   }
-
+  
   render() {
+    window.alert("check your internet if the map doesn't load in 2 minutes. Other than that, I hope you enjoy!")
     return (
       <div className="App">
         <header className="map-header" role="header" aria-label="map app header">
