@@ -53,6 +53,7 @@ gm_authFailure(){
   window.alert("Google Maps Error!")
 }
 
+
 showInfo = (list)=>{
    //get the the position of the name, then show the info window
   this.setState({
