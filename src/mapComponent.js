@@ -37,8 +37,7 @@ componentDidMount(){
     this.setState({
       selectedPlace: uni.name,
       position: uni.position,
-      showingInfoWindow: true,
-      animation: this.props.google.maps.Animation.BOUNCE
+      showingInfoWindow: true
     });
   }
 
@@ -46,7 +45,7 @@ componentDidMount(){
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: this.props.google.maps.Animation.BOUNCE
       })
     }
   };
@@ -59,7 +58,8 @@ showInfo = (list)=>{
   this.setState({
       selectedPlace: list.name,
       position: list.position,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      activeMarker: this.props.google.maps.Animation.BOUNCE
     });
   }
 
@@ -90,6 +90,7 @@ showInfo = (list)=>{
           <List
             showInfo= {this.showInfo}
             List={uniResults}
+            onClick={this.onMarkerClick}
             />
           {this.state.noMapError? (
           <Map
